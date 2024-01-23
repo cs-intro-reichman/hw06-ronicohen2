@@ -97,8 +97,6 @@ public class Runigram
 		int rows = image.length;
 		int cols = image[0].length;
 		Color[][] newimage = new Color[rows][cols];
-		while (rows>=0 && cols>=0)
-		{
 			for (int x = 0; x<rows; x++)
 			{
 				for (int y = 0; y < cols; y++)
@@ -106,7 +104,6 @@ public class Runigram
 					newimage[x][y] = image[x][cols-1-y];
 			    }
 		    }
-		}
 		return newimage;
 	}
 	
