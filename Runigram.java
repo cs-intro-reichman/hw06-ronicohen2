@@ -66,33 +66,74 @@ public class Runigram {
 	/**
 	 * Returns an image which is the horizontally flipped version of the given image. 
 	 */
-	public static Color[][] flippedHorizontally(Color[][] image) {
-		//// Replace the following statement with your code
-		return null;
+	public static Color[][] flippedHorizontally(Color[][] image) 
+	{
+		int i = image.length;
+		int j = image[0].length;
+		Color[][] newimage = new Color[i][j];
+		while (i>=0 && j>=0)
+		{
+			for (int x = 0; x<i; x++)
+			{
+				for (int y = 0; y < j; y++)
+				{
+					newimage[x][y] = image[i][j];
+				    j--;
+			    }
+			    i--;
+		    }
+	    }
+		return newimage;
 	}
 	
 	/**
 	 * Returns an image which is the vertically flipped version of the given image. 
 	 */
-	public static Color[][] flippedVertically(Color[][] image){
-		//// Replace the following statement with your code
-		return null;
+	public static Color[][] flippedVertically(Color[][] image)
+	{
+		int rows = image.length;
+		int cols = image[0].length;
+		Color[][] newimage = new Color[rows][cols];
+		while (rows>=0 && cols>=0)
+		{
+			for (int x = 0; x<rows; x++)
+			{
+				for (int y = 0; y < cols; y++)
+				{
+					newimage[x][y] = image[rows-1-x][y];
+			    }
+		    }
+		}
+		return newimage;
 	}
 	
 	// Computes the luminance of the RGB values of the given pixel, using the formula 
 	// lum = 0.299 * r + 0.587 * g + 0.114 * b, and returns a Color object consisting
 	// the three values r = lum, g = lum, b = lum.
-	public static Color luminance(Color pixel) {
-		//// Replace the following statement with your code
-		return null;
+	public static Color luminance(Color pixel) 
+	{
+		
+		int r = pixel.getRed();
+		int g = pixel.getGreen();
+		int b = pixel.getBlue();
+		int lumValue = (int) (0.299 * r + 0.587 * g + 0.114 * b);
+		Color lum = new Color(lumValue, lumValue, lumValue);
+		return lum;
 	}
 	
 	/**
 	 * Returns an image which is the grayscaled version of the given image.
 	 */
-	public static Color[][] grayScaled(Color[][] image) {
-		//// Replace the following statement with your code
-		return null;
+	public static Color[][] grayScaled(Color[][] image) 
+	{
+		for (int i = 0; i < image.length; i++)
+			{
+				for (int j = 0; j < image[0].length; j++)
+				{
+					image[i][j] = luminance(image[i][j]);
+			    }
+		    }
+		return image;
 	}	
 	
 	/**
