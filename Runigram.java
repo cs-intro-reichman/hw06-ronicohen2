@@ -91,21 +91,19 @@ public class Runigram
 	 */
 	public static Color[][] flippedHorizontally(Color[][] image) 
 	{
-		int i = image.length;
-		int j = image[0].length;
-		Color[][] newimage = new Color[i][j];
-		while (i>=0 && j>=0)
+		int rows = image.length;
+		int cols = image[0].length;
+		Color[][] newimage = new Color[rows][cols];
+		while (rows>=0 && cols>=0)
 		{
-			for (int x = 0; x<i; x++)
+			for (int x = 0; x<rows; x++)
 			{
-				for (int y = 0; y < j; y++)
+				for (int y = 0; y < cols; y++)
 				{
-					newimage[x][y] = image[i][j];
-				    j--;
+					newimage[x][y] = image[x][cols-1-y];
 			    }
-			    i--;
 		    }
-	    }
+		}
 		return newimage;
 	}
 	
@@ -163,9 +161,13 @@ public class Runigram
 	 * Returns an image which is the scaled version of the given image. 
 	 * The image is scaled (resized) to have the given width and height.
 	 */
-	public static Color[][] scaled(Color[][] image, int width, int height) {
-		//// Replace the following statement with your code
-		return null;
+	public static Color[][] scaled(Color[][] image, int width, int height) 
+	{
+		int rows = image.length;
+		int cols = image[0].length;
+		Color[][] newimage = new Color[rows][cols];
+
+		return newimage;
 	}
 	
 	/**
@@ -174,7 +176,8 @@ public class Runigram
 	 * v = alpha * v1 + (1 - alpha) * v2, where v1 and v2 are the corresponding r, g, b
 	 * values in the two input color.
 	 */
-	public static Color blend(Color c1, Color c2, double alpha) {
+	public static Color blend(Color c1, Color c2, double alpha) 
+	{
 		//// Replace the following statement with your code
 		return null;
 	}
@@ -185,7 +188,8 @@ public class Runigram
 	 * and (1 - alpha) part the second image.
 	 * The two images must have the same dimensions.
 	 */
-	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
+	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) 
+	{
 		//// Replace the following statement with your code
 		return null;
 	}
@@ -196,12 +200,14 @@ public class Runigram
 	 * Before starting the process, scales the target image to the dimensions
 	 * of the source image.
 	 */
-	public static void morph(Color[][] source, Color[][] target, int n) {
+	public static void morph(Color[][] source, Color[][] target, int n) 
+	{
 		//// Replace this comment with your code
 	}
 	
 	/** Creates a canvas for the given image. */
-	public static void setCanvas(Color[][] image) {
+	public static void setCanvas(Color[][] image) 
+	{
 		StdDraw.setTitle("Runigram 2023");
 		int height = image.length;
 		int width = image[0].length;
@@ -214,7 +220,8 @@ public class Runigram
 	}
 
 	/** Displays the given image on the current canvas. */
-	public static void display(Color[][] image) {
+	public static void display(Color[][] image) 
+	{
 		int height = image.length;
 		int width = image[0].length;
 		for (int i = 0; i < height; i++) {
