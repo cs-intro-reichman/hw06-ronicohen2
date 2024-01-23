@@ -189,8 +189,14 @@ public class Runigram
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) 
 	{
-		//// Replace the following statement with your code
-		return null;
+		int r1 = c1.getRed();
+		int g1 = c1.getGreen();
+		int b1 = c1.getBlue();
+		int r2 = c2.getRed();
+		int g2 = c2.getGreen();
+		int b2 = c2.getBlue();
+        Color newColor = new Color((int)(alpha*r1+(1-alpha)*r2),(int)(alpha*g1+(1-alpha)*g2) ,(int)(alpha*b1+(1-alpha)*b2) );
+		return newColor;
 	}
 	
 	/**
@@ -201,8 +207,17 @@ public class Runigram
 	 */
 	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) 
 	{
-		//// Replace the following statement with your code
-		return null;
+		int rows = image1.length;
+		int cols = image1[0].length;
+		Color[][] newImage = new Color[rows][cols];
+		for (int i=0; i<rows; i++)
+		{
+			for (int j=0; j<cols; j++)
+			{
+				newImage[i][j] = blend(image1[i][j], image2[i][j], alpha);
+			}
+		}
+		return newImage;
 	}
 
 	/**
@@ -213,7 +228,19 @@ public class Runigram
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) 
 	{
-		//// Replace this comment with your code
+		int sourceHeight = source.length;
+		int sourceWidth = source[0].length;
+		Color[][] scaledTarget = scaled(target, sourceWidth, sourceHeight);
+		setCanvas(source);
+		for (int i = 0; i <= n; i++) 
+		{
+			double alpha = (double) (n - i) / n;
+			Color[][] morphedImage = blend(source, scaledTarget, alpha);
+			display(morphedImage);
+			StdDraw.pause(500);
+			StdDraw.clear();
+		}
+
 	}
 	
 	/** Creates a canvas for the given image. */
