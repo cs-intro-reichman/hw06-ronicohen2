@@ -17,6 +17,9 @@ public class Runigram
 
 		// Creates an image which will be the result of various 
 		// image processing operations:
+		Color[][] scaledimage = scaled(tinypic, 3, 5);
+		print(scaledimage);
+
 		Color[][] imageOut;
 
 		// Tests the horizontal flipping of an image:
@@ -165,9 +168,20 @@ public class Runigram
 	{
 		int rows = image.length;
 		int cols = image[0].length;
-		Color[][] newimage = new Color[rows][cols];
-
-		return newimage;
+        Color[][] newImage = new Color[height][width];
+		double rowScale = (double) rows / height;
+		double colScale = (double) cols / width;
+		for (int i = 0; i < height; i++) 
+		{
+			for (int j = 0; j < width; j++) 
+		    {
+				int originalRow = (int) (i * rowScale);
+                int originalCol = (int) (j * colScale);
+                newImage[i][j] = image[originalRow][originalCol];
+            }
+		    
+	    }
+		return newImage;
 	}
 	
 	/**
