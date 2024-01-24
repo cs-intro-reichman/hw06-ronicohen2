@@ -97,7 +97,7 @@ public class Runigram
 		int rows = image.length;
 		int cols = image[0].length;
 		Color[][] newimage = new Color[rows][cols];
-			for (int x = 0; x<rows; x++)
+			for (int x = 0; x < rows; x++)
 			{
 				for (int y = 0; y < cols; y++)
 				{
@@ -147,14 +147,15 @@ public class Runigram
 	 */
 	public static Color[][] grayScaled(Color[][] image) 
 	{
+		Color[][] newImage = new Color[image.length][image[0].length];
 		for (int i = 0; i < image.length; i++)
 			{
-				for (int j = 0; j < image[0].length; j++)
+				for (int j = 0; j < image[i].length; j++)
 				{
-					image[i][j] = luminance(image[i][j]);
+					newImage[i][j] = luminance(image[i][j]);
 			    }
 		    }
-		return image;
+		return newImage;
 	}	
 	
 	/**
@@ -238,9 +239,7 @@ public class Runigram
 			Color[][] morphedImage = blend(source, scaledTarget, alpha);
 			display(morphedImage);
 			StdDraw.pause(500);
-			StdDraw.clear();
 		}
-
 	}
 	
 	/** Creates a canvas for the given image. */
