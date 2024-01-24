@@ -115,8 +115,6 @@ public class Runigram
 		int rows = image.length;
 		int cols = image[0].length;
 		Color[][] newimage = new Color[rows][cols];
-		while (rows>=0 && cols>=0)
-		{
 			for (int x = 0; x<rows; x++)
 			{
 				for (int y = 0; y < cols; y++)
@@ -124,7 +122,6 @@ public class Runigram
 					newimage[x][y] = image[rows-1-x][y];
 			    }
 		    }
-		}
 		return newimage;
 	}
 	
@@ -133,11 +130,11 @@ public class Runigram
 	// the three values r = lum, g = lum, b = lum.
 	public static Color luminance(Color pixel) 
 	{
-		
 		int r = pixel.getRed();
 		int g = pixel.getGreen();
 		int b = pixel.getBlue();
 		int lumValue = (int) (0.299 * r + 0.587 * g + 0.114 * b);
+		lumValue = Math.min(255, Math.max(0, lumValue));
 		Color lum = new Color(lumValue, lumValue, lumValue);
 		return lum;
 	}
