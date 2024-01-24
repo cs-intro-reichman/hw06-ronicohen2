@@ -7,9 +7,11 @@ import java.awt.Color;
  * height of the scaled, output image. For example, to scale/resize ironman.ppm to a width
  * of 100 pixels and a height of 900 pixels, use: java Editor2 ironman.ppm 100 900
  */
-public class Editor2 {
+public class Editor2 
+{
 
-	public static void main (String[] args){
+	public static void main (String[] args)
+	{
 		String fileName = args[0];
 		int width = Integer.parseInt(args[1]);
 		int height = Integer.parseInt(args[2]);

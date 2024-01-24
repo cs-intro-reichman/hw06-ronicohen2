@@ -10,9 +10,11 @@ import java.awt.Color;
  * Note: There is no need to scale the target image to the size of the source
  * image, since Runigram.morph performs this action.
  */
-public class Editor3 {
+public class Editor3 
+{
 
-	public static void main (String[] args) {
+	public static void main (String[] args) 
+	{
 		String source = args[0];
 		String target = args[1];
 		int n = Integer.parseInt(args[2]);
